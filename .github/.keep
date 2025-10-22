@@ -1,0 +1,5 @@
+#valerie/shejla task = load_quotes_from_disk(Filename)
+#robin task = get_random_quote(Quotes_list)
+#brian task = save_quotes_to_disk(quotes_list, date_str)
+#andrew task = group_introductions()
+#edvino/santiago task = scrape_all_quotes()
