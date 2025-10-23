@@ -26,10 +26,10 @@ multi_quote = [
 ]
 # SECTION 1: IMPORTS
 # All team members: Add the libraries you need for your function here.
-# import requests
-# import json
-# import random
-# from bs4 import BeautifulSoup
+import requests
+import json
+import random
+from bs4 import BeautifulSoup
 
 
 # ==================================
@@ -50,7 +50,17 @@ multi_quote = [
 
 # --- Function for Student C ---
 # TODO: Put your load_quotes_from_disk function here.
+def load_quotes_from_disk(filename):
+	filename= multi_quote
 # This function should take a filename.
+	if os.path.exist(filename):
+		return filename
+	else:
+		return []
+
+	print(filename)
+
+
 # If the file exists, it returns the list of quotes from the file.
 # If the file does not exist, it returns an empty list [].
 
@@ -83,4 +93,4 @@ multi_quote = [
 
 
 # Team Lead/Integrator: Write the main logic here that calls the functions.
-if __name__ == "__main__":
+# if __name__ == "__main__":
