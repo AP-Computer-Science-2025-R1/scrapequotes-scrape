@@ -87,9 +87,24 @@
 # Team Lead/Integrator: Write the main logic here that calls the functions.
 from bs4 import BeautifulSoup
 import requests
-url = 'https://quotes.toscrape.com'
+url = 'https://quotes.toscrape.com/'
 page = requests.get(url)
 
 print(page)
 html = BeautifulSoup(page.text, features = "html.parser")
-print(html.find('p', class_ = 'lead').text.strip)
+dsa = html.find_all('span', class_ = "text")
+# dsa = html.find('span', class_ = "text")
+print(len(dsa))
+for i in dsa:
+    print()
+    print(i.text)
+    print()
+#  Column_Data = (html.find_all('span', class_ = "text"))
+# print(Column_Data)
+
+
+
+# import pandas as pd
+# pd.tital
+# for row in Column_Data:
+#     row_Data = row.find_all()
