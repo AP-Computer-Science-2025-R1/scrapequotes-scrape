@@ -1,3 +1,5 @@
-import pandas as pd
-from bs4 import BeautifulSoup
-import requests
+import csv
+with open('quotes_date.csv', 'w', newline='', encoding='utf-8') as csvfile:
+writer = csv.writer(csvfile)
+writer.writerows(scraped_data)
+print("Your quotes are saved in the 'quotes_date.csv' file!")
