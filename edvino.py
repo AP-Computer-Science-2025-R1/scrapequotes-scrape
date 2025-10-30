@@ -3,6 +3,7 @@ from bs4 import BeautifulSoup
 import os
 import csv
 import json
+import random
 
 date_str = input("Enter the date:")  # Example date string for filename
 URL = "https://quotes.toscrape.com"
@@ -36,7 +37,7 @@ while next_page:
 print(f"\n Scraped {len(scraped_quotes)} quotes total!")
 
 
-
+# Save quotes to a CSV file
 filename = f"quotes_{date_str}.csv"
 
 with open('quotes_date.csv', 'w', newline='', encoding='utf-8') as csvfile:
@@ -46,54 +47,31 @@ with open('quotes_date.csv', 'w', newline='', encoding='utf-8') as csvfile:
 
 print(f" Your quotes are saved in '{filename}'!")
 
+
 def load_quotes_from_disk(filename):
-	# os- built in library that interacts with the operating system
-	# path- getting the filename
-	# exists- to check if the path exists
+    # os - built-in library that interacts with the operating system
+    # path - getting the filename
+    # exists - to check if the path exists
     if not os.path.exists(filename):
-        print("File not found")
-		# [] represents an empty list
-        return []
+        print("File not found.")
+        return []  # [] represents an empty list
 
     try:
-		# filename.endswith .json or .csv- sees if the true/false and can run
-        if filename.endswith(".json"):
-			# r- reads the file
-			# as f- gives it a temporary name to refer to it
-			# with- it opens and automatically closes the file
-            with open(filename, "r") as f:
-                data = json.load(f)
-                print("Loaded quotes from JSON file.")
-				# exits the function and sends the data to the function
-                return data
-
-        elif filename.endswith(".csv"):
-            with open(filename, "r") as f:
-				# dictreader- turning it into a list
+        if filename.endswith(".csv"):
+            with open(filename, "r", encoding="utf-8") as f:
+                # DictReader - turns each row into a dictionary
                 reader = csv.DictReader(f)
-				#list- a way that converts everthing to be organized
-                data = list(reader)
+                data = list(reader)  # list() makes it organized
                 print("Loaded quotes from CSV file.")
                 return data
-
         else:
             print("File type not supported. Use JSON or CSV.")
             return []
-# except- tells the program that if there is an error to not stop the whole program but instead handle it on its own
-# exception- it catches the errors then prints out the error message
+
+    # except - handles any errors without crashing the program
     except Exception as e:
         print("Error reading the file:", e)
         return []
 
-
-# Example use
-if __name__ == "__main__":
-    # Example data (you can replace this with your real quotes)
-    sample_quotes = [
-        {"text": "Be yourself; everyone else is already taken.", "author": "Oscar Wilde"},
-        {"text": "In the middle of difficulty lies opportunity.", "author": "Albert Einstein"}
-	]
-# a filename that is present should be inputted what it says "file"
-print(load_quotes_from_disk('file'))
-    
-
+loaded_quotes = load_quotes_from_disk(f"quotes_{date_str}.csv")
+print(f"Loaded {len(loaded_quotes)} quotes from disk.")
