@@ -30,8 +30,8 @@ import requests
 import json
 import random
 from bs4 import BeautifulSoup
-
-
+import os
+import csv
 # ==================================
 # SECTION 2: FUNCTION DEFINITIONS
 # ==================================
@@ -50,20 +50,57 @@ from bs4 import BeautifulSoup
 
 # --- Function for Student C ---
 # TODO: Put your load_quotes_from_disk function here.
+
+#def- creates a reusable block of the code like a function
 def load_quotes_from_disk(filename):
-	filename= multi_quote
-# This function should take a filename.
-	if os.path.exist(filename):
-		return filename
-	else:
-		return []
+	# os- built in library that interacts with the operating system
+	# path- getting the filename
+	# exists- to check if the path exists
+    if not os.path.exists(filename):
+        print("File not found")
+		# [] represents an empty list
+        return []
 
-	print(filename)
+    try:
+		# filename.endswith .json or .csv- sees if the true/false and can run
+        if filename.endswith(".json"):
+			# r- reads the file
+			# as f- gives it a temporary name to refer to it
+			# with- it opens and automatically closes the file
+            with open(filename, "r") as f:
+                data = json.load(f)
+                print("Loaded quotes from JSON file.")
+				# exits the function and sends the data to the function
+                return data
+
+        elif filename.endswith(".csv"):
+            with open(filename, "r") as f:
+				# dictreader- turning it into a list
+                reader = csv.DictReader(f)
+				#list- a way that converts everthing to be organized
+                data = list(reader)
+                print("Loaded quotes from CSV file.")
+                return data
+
+        else:
+            print("File type not supported. Use JSON or CSV.")
+            return []
+# except- tells the program that if there is an error to not stop the whole program but instead handle it on its own
+# exception- it catches the errors then prints out the error message
+    except Exception as e:
+        print("Error reading the file:", e)
+        return []
 
 
-# If the file exists, it returns the list of quotes from the file.
-# If the file does not exist, it returns an empty list [].
-
+# Example use
+if __name__ == "__main__":
+    # Example data (you can replace this with your real quotes)
+    sample_quotes = [
+        {"text": "Be yourself; everyone else is already taken.", "author": "Oscar Wilde"},
+        {"text": "In the middle of difficulty lies opportunity.", "author": "Albert Einstein"}
+	]
+# a filename that is present should be inputted what it says "file"
+print(load_quotes_from_disk('file'))
 
 # --- Function for Student D ---
 # TODO: Put your get_quotes_by_tag function here.
