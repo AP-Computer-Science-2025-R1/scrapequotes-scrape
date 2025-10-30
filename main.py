@@ -92,19 +92,12 @@ page = requests.get(url)
 
 print(page)
 html = BeautifulSoup(page.text, features = "html.parser")
-dsa = html.find_all('span', class_ = "text")
-# dsa = html.find('span', class_ = "text")
-print(len(dsa))
-for i in dsa:
-    print()
-    print(i.text)
-    print()
-#  Column_Data = (html.find_all('span', class_ = "text"))
-# print(Column_Data)
-
-
-
-# import pandas as pd
-# pd.tital
-# for row in Column_Data:
-#     row_Data = row.find_all()
+Quotes = html.find_all('span', class_ = "text")
+Auther = html.find_all('small', class_ = "author")
+print(len(Quotes))
+for q in Quotes:
+    for a in Auther:
+        print()
+        print(q.text)
+        print("by ",a.text)
+        print()
