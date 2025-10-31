@@ -80,11 +80,9 @@ def get_quotes():
     url = 'https://quotes.toscrape.com/'
     page = requests.get(url)
 
-    # print(page)
     html = BeautifulSoup(page.text, features = "html.parser")
     Quotes = html.find_all('span', class_ = "text")
     Authers = html.find_all('small', class_ = "author")
-    # print(len(Quotes))
     for q, a in zip(Quotes, Authers):
         print(f"{q.text}\n by {a.text}\n")
 
