@@ -68,36 +68,25 @@
 # This function should take the list of quotes.
 # It picks one random quote and prints it.
 
-
-
-
-
-
-
-
-
-
-
-
 # ==================================
 # SECTION 3: MAIN PROGRAM
 # ==================================
 
 
 # Team Lead/Integrator: Write the main logic here that calls the functions.
-from bs4 import BeautifulSoup
-import requests
-url = 'https://quotes.toscrape.com/'
-page = requests.get(url)
+def get_quotes():
+    from bs4 import BeautifulSoup
+    import requests
+    url = 'https://quotes.toscrape.com/'
+    page = requests.get(url)
 
-print(page)
-html = BeautifulSoup(page.text, features = "html.parser")
-Quotes = html.find_all('span', class_ = "text")
-Auther = html.find_all('small', class_ = "author")
-print(len(Quotes))
-for q in Quotes:
-    for a in Auther:
-        print()
-        print(q.text)
-        print("by ",a.text)
-        print()
+    # print(page)
+    html = BeautifulSoup(page.text, features = "html.parser")
+    Quotes = html.find_all('span', class_ = "text")
+    Authers = html.find_all('small', class_ = "author")
+    # print(len(Quotes))
+    for q, a in zip(Quotes, Authers):
+        print(f"{q.text}\n by {a.text}\n")
+
+
+get_quotes()
