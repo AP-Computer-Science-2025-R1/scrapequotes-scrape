@@ -118,7 +118,6 @@ def load_quotes_from_disk(filename):
         print("Error reading the file:", e)
         return []
 
-date_str = input("Enter the date (Ex:MM-DD-YYYY):")
 loaded_quotes = load_quotes_from_disk(f"quotes_{date_str}.csv")
 print(f"Loaded {len(loaded_quotes)} quotes from disk.")
 print("")
@@ -154,6 +153,6 @@ def group_introduction():
     print("Andrew Morrobel, Function: group_introduction")
     print("")
     print("The purpose of this project is to practice and demonstrate our abilites, and to prove our capabilites, as well as showing ourseleves how well we can work togther to accomplish a higher goal, as we scrape a website, for certain infomration being able to save it to a file, and then load it back from the file, and finally select a random quote from the loaded data.")
-
+    return date_str=input("Enter the date (Ex:MM-DD-YYYY): ")
 
     
