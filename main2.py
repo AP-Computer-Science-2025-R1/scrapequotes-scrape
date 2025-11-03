@@ -50,35 +50,27 @@ import requests
 # This function should scrape all quotes from the website.
 # It should return a list of quote dictionaries.
 def get_quotes():
-    
     URL = "https://quotes.toscrape.com"
     next_page = "/page/1/"
-    scraped_quotes = [] 
+    scraped_quotes = []
 
     while next_page:
         page = requests.get(URL + next_page)
         soup = BeautifulSoup(page.text, "html.parser")
-
         quotes = soup.find_all("div", class_="quote")
 
         for quote in quotes:
-            text = quote.find("span", class_="text").get_text()     # The quote text
-            author = quote.find("small", class_="author").get_text()  # The author
+            text = quote.find("span", class_="text").get_text()
+            author = quote.find("small", class_="author").get_text()
             print(f"{text}\n— {author}")
             print("-" * 50)
             scraped_quotes.append([text, author])
 
         next_btn = soup.find("li", class_="next")
-        if next_btn:  
-            next_page = next_btn.find("a")["href"]
-        else:
-            next_page = None
+        next_page = next_btn.find("a")["href"] if next_btn else None
 
     print(f"\nScraped {len(scraped_quotes)} quotes total!\n")
-    return scraped_quotes  #  Return this list so it can be used later
-
-
-
+    return scraped_quotes
 
 
 
@@ -92,6 +84,7 @@ def quotes_date(scraped_quotes, date_str):
         writer = csv.writer(csvfile)
         writer.writerows(scraped_quotes)
         print(f"Your quotes are saved in '{filename}' file!")
+
 
 
 # --- Function for Student C ---
