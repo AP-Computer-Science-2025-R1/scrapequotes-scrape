@@ -101,3 +101,4 @@ Installation: Make sure you have the required libraries installed: pip install r
 Inspect the Page: Use your web browser's Developer Tools (right-click -> Inspect) to examine the HTML structure of quotes.toscrape.com. Identify the HTML tags and CSS classes that contain the quote text, author, and tags.
 
 Pagination: The key to scraping all pages is to find the link for the "Next" button. Your script needs to find this link's URL and make a new request until a "Next" button is no longer present on the page.
+
