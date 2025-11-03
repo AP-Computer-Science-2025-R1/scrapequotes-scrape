@@ -41,8 +41,59 @@ multi_quote = [
 # This function should scrape all quotes from the website.
 # It should return a list of quote dictionaries.
 
-def scrape_all_quotes():
-	 while next_page:
+
+
+
+# --- Function for Student B ---
+# TODO: Put your save_quotes_to_disk function here.
+# This function should take the list of quotes and a filename.
+# It should save the quotes to a JSON or CSV file.
+
+
+
+# --- Function for Student C ---
+# TODO: Put your load_quotes_from_disk function here.
+# This function should take a filename.
+# If the file exists, it returns the list of quotes from the file.
+# If the file does not exist, it returns an empty list [].
+
+
+
+
+
+# --- Function for Student D ---
+# TODO: Put your get_quotes_by_tag function here.
+# This function should take the list of quotes.
+# It asks the user for a tag and prints any matching quotes.
+
+
+
+# --- Function for Student E ---
+# TODO: Put your get_random_quote function here.
+# This function should take the list of quotes.
+# It picks one random quote and prints it.
+
+# ==================================
+# SECTION 3: MAIN PROGRAM
+# ==================================
+
+
+# Team Lead/Integrator: Write the main logic here that calls the functions.
+if __name__ == "__main__":
+	
+    import requests
+    from bs4 import BeautifulSoup
+    import os
+    import csv
+    import json
+    import random
+
+    date_str = input("Enter the date (Ex:MM-DD-YYYY):")  #  Date string for filename
+    URL = "https://quotes.toscrape.com"
+    next_page = "/page/1/"
+    scraped_quotes = []  # empty list to store [quote, author] pairs
+
+    while next_page:
         page = requests.get(URL + next_page)
         soup = BeautifulSoup(page.text, "html.parser")
         # Find all quote blocks on the page
@@ -67,14 +118,8 @@ def scrape_all_quotes():
     print(f"\n Scraped {len(scraped_quotes)} quotes total!")
     print("")
 
-
-# --- Function for Student B ---
-# TODO: Put your save_quotes_to_disk function here.
-# This function should take the list of quotes and a filename.
-# It should save the quotes to a JSON or CSV file.
-
-def save_quotes_to_disk(quotes, filename):
-	 filename = f"quotes_{date_str}.csv"
+    # Save quotes to a CSV file
+    filename = f"quotes_{date_str}.csv"
 
     with open(filename, 'w', newline='', encoding='utf-8') as csvfile:  
         writer = csv.writer(csvfile)
@@ -82,14 +127,8 @@ def save_quotes_to_disk(quotes, filename):
         writer.writerows(scraped_quotes)
         print(f"Your quotes are saved in '{filename}' file!") 
 
-# --- Function for Student C ---
-# TODO: Put your load_quotes_from_disk function here.
-# This function should take a filename.
-# If the file exists, it returns the list of quotes from the file.
-# If the file does not exist, it returns an empty list [].
-
-def load_quotes_from_disk(filename):
-	  # os - built-in library that interacts with the operating system
+    def load_quotes_from_disk(filename):
+        # os - built-in library that interacts with the operating system
         # path - getting the filename
         # exists - to check if the path exists
         if not os.path.exists(filename):
@@ -113,71 +152,24 @@ def load_quotes_from_disk(filename):
             print("Error reading the file:", e)
             return []
 
-loaded_quotes = load_quotes_from_disk(f"quotes_{date_str}.csv")
-print(f"Loaded {len(loaded_quotes)} quotes from disk.")
-print("")
+    loaded_quotes = load_quotes_from_disk(f"quotes_{date_str}.csv")
+    print(f"Loaded {len(loaded_quotes)} quotes from disk.")
+    print("")
 
-
-
-# --- Function for Student D ---
-# TODO: Put your get_quotes_by_tag function here.
-# This function should take the list of quotes.
-# It asks the user for a tag and prints any matching quotes.
-
-
-
-# --- Function for Student E ---
-# TODO: Put your get_random_quote function here.
-# This function should take the list of quotes.
-# It picks one random quote and prints it.
-
-def get_random_quote(quotes):
-	oratrice = input(str("Would you like a random quote? \n yes or no?"))
+    oratrice = input(str("Would you like a random quote? \n yes or no?"))
     if oratrice == "yes":
         rando_quote = random.choice(scraped_quotes)
         print(rando_quote)
 
+    # Group Info
 
-
-
-
-
-
-
-
-
-# ==================================
-# SECTION 3: MAIN PROGRAM
-# ==================================
-
-
-# Team Lead/Integrator: Write the main logic here that calls the functions.
-if __name__ == "__main__":
-	
-    import requests
-    from bs4 import BeautifulSoup
-    import os
-    import csv
-    import json
-    import random
-
-    date_str = input("Enter the date (Ex:MM-DD-YYYY):")  #  Date string for filename
-    URL = "https://quotes.toscrape.com"
-    next_page = "/page/1/"
-    scraped_quotes = []  # empty list to store [quote, author] pairs
-
-	print(def scrape_all_quotes()
-	print(def save_quotes_to_disk(quotes, filename))
-	print(def load_quotes_from_disk(filename))
-	print(def get_random_quote(quotes))
-
-    print("-" * 50)
-    print("Group: Scrape")
-    print("Members and Contributions:")
-    print("Edvino Teyuca/Santiago Betancourt, Function: scraped_quotes")
-    print("Brian Santos Cruz, Function: saved_quotes_to_disk")
-    print("Valerie Maget/Shejla Osmanovic, Function: load_quotes_from_disk")
-    print("Robin Ivan Rafael, Function: random_quote_selection")
-    print("Andrew Morrobel, Function: group_introduction")
-    print("")
-    print("The purpose of this project is to practice and demonstrate our abilites, and to prove our capabilites, as well as showing ourseleves how well we can work togther to accomplish a higher goal, as we scrape a website, for certain infomration being able to save it to a file, and then load it back from the file, and finally select a random quote from the loaded data.")
+print("-" * 50)
+print("Group: Scrape")
+print("Members and Contributions:")
+print("Edvino Teyuca/Santiago Betancourt, Function: scraped_quotes")
+print("Brian Santos Cruz, Function: saved_quotes_to_disk")
+print("Valerie Maget/Shejla Osmanovic, Function: load_quotes_from_disk")
+print("Robin Ivan Rafael, Function: random_quote_selection")
+print("Andrew Morrobel, Function: group_introduction")
+print("")
+print("The purpose of this project is to practice and demonstrate our abilites, and to prove our capabilites, as well as showing ourseleves how well we can work togther to accomplish a higher goal, as we scrape a website, for certain infomration being able to save it to a file, and then load it back from the file, and finally select a random quote from the loaded data.")
