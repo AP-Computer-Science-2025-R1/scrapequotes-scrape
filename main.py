@@ -124,7 +124,7 @@ print("")
 # This function should take the list of quotes.
 # It picks one random quote and prints it.
 
-def rando_quote():
+def rando_quote(scraped_quotes):
     oratrice = input(str("Would you like a random quote? \n yes or no?"))
     if oratrice == "yes":
         rando_quote = random.choice(scraped_quotes)
