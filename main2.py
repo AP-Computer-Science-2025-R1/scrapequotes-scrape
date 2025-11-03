@@ -148,3 +148,6 @@ def rando_quote():
     if oratrice == "yes":
         rando_quote = random.choice(scraped_quotes)
         print(rando_quote)
+
+if __name__ == "__main__":
+    

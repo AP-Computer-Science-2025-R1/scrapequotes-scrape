@@ -33,6 +33,8 @@ import json
 import random
 from bs4 import BeautifulSoup
 import requests
+
+from main2 import get_quotes, quotes_date, load_quotes_from_disk, rando_quote
 # ==================================
 # SECTION 2: FUNCTION DEFINITIONS
 # ==================================
@@ -86,6 +88,8 @@ import requests
 # Team Lead/Integrator: Write the main logic here that calls the functions.
 if __name__ == "__main__":
     date_str = input("Enter the date (Ex:MM-DD-YYYY): ")
+    
+    # Scrape all quotes from the website
 
     scraped_quotes = get_quotes()
 
