@@ -150,4 +150,5 @@ def rando_quote():
         print(rando_quote)
 
 if __name__ == "__main__":
+    pass
     
