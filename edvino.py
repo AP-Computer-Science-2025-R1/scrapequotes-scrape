@@ -5,7 +5,7 @@ import csv
 import json
 import random
 
-date_str = input("Enter the date:")  # Example date string for filename
+date_str = input("Enter the date:")  #  Date string for filename
 URL = "https://quotes.toscrape.com"
 next_page = "/page/1/"
 scraped_quotes = []  # empty list to store [quote, author] pairs
@@ -40,12 +40,12 @@ print(f"\n Scraped {len(scraped_quotes)} quotes total!")
 # Save quotes to a CSV file
 filename = f"quotes_{date_str}.csv"
 
-with open('quotes_date.csv', 'w', newline='', encoding='utf-8') as csvfile:
+with open(filename, 'w', newline='', encoding='utf-8') as csvfile:  
     writer = csv.writer(csvfile)
+    writer.writerow(["Quote", "Author"]) 
     writer.writerows(scraped_quotes)
-    print("Your quotes are saved in the 'quotes_date.csv' file!") 
+    print(f"Your quotes are saved in '{filename}' file!") 
 
-print(f" Your quotes are saved in '{filename}'!")
 
 
 def load_quotes_from_disk(filename):
@@ -61,7 +61,7 @@ def load_quotes_from_disk(filename):
             with open(filename, "r", encoding="utf-8") as f:
                 # DictReader - turns each row into a dictionary
                 reader = csv.DictReader(f)
-                data = list(reader)  # list() makes it organized
+                data = list(reader)
                 print("Loaded quotes from CSV file.")
                 return data
         else:
@@ -75,3 +75,20 @@ def load_quotes_from_disk(filename):
 
 loaded_quotes = load_quotes_from_disk(f"quotes_{date_str}.csv")
 print(f"Loaded {len(loaded_quotes)} quotes from disk.")
+
+
+
+oratrice = input(str("Would you like a random quote? \n yes or no?"))
+if oratrice =="yes":
+        rando_quote = random.choice(scraped_quotes)
+        print(rando_quote)
+
+print("-"*50)
+print( "Group: Scrape")
+print("Members and Contributions:")
+print("Edvino Teyuca/Santiago Betancourt, Function: scraped_quotes")
+print("Brian Santos Cruz, Function: saved_quotes_to_disk")
+print("Valerie Maget/Shejla Osmanovic, Function: load_quotes_from_disk")
+print("Robin Ivan Rafael, Function: random_quote_selection")
+print("Andrew Morrobel, Function: group_introduction")
+print
