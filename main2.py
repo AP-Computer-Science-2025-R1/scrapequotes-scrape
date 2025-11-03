@@ -41,6 +41,7 @@ import json
 import random
 from bs4 import BeautifulSoup
 import requests
+import datetime
 # ==================================
 # SECTION 2: FUNCTION DEFINITIONS
 # ==================================
@@ -84,7 +85,7 @@ def quotes_date(scraped_quotes, date_str):
         writer = csv.writer(csvfile)
         writer.writerows(scraped_quotes)
         print(f"Your quotes are saved in '{filename}' file!")
-
+    return quotes_date
 
 
 # --- Function for Student C ---
@@ -142,6 +143,17 @@ def rando_quote():
         rando_quote = random.choice(scraped_quotes)
         print(rando_quote)
 
-if __name__ == "__main__":
-    pass
+def group_introduction():
+    print("-" * 50)
+    print("Group: Scrape")
+    print("Members and Contributions:")
+    print("Edvino Teyuca/Santiago Betancourt, Function: scraped_quotes")
+    print("Brian Santos Cruz, Function: saved_quotes_to_disk")
+    print("Valerie Maget/Shejla Osmanovic, Function: load_quotes_from_disk")
+    print("Robin Ivan Rafael, Function: random_quote_selection")
+    print("Andrew Morrobel, Function: group_introduction")
+    print("")
+    print("The purpose of this project is to practice and demonstrate our abilites, and to prove our capabilites, as well as showing ourseleves how well we can work togther to accomplish a higher goal, as we scrape a website, for certain infomration being able to save it to a file, and then load it back from the file, and finally select a random quote from the loaded data.")
+
+
     

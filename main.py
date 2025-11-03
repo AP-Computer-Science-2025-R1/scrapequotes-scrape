@@ -86,21 +86,24 @@ from main2 import get_quotes, quotes_date, load_quotes_from_disk, rando_quote
 
 
 # Team Lead/Integrator: Write the main logic here that calls the functions.
-if __name__ == "__main__":
-    date_str = input("Enter the date (Ex:MM-DD-YYYY): ")
-    
-    # Scrape all quotes from the website
 
-    scraped_quotes = get_quotes()
+# Step 1: Ask for the date string
+ date_str = input("Enter the date (Ex:MM-DD-YYYY): ")
 
-    # Save with the same filename pattern
-    quotes_date(scraped_quotes, date_str)
+# Step 2: Scrape all quotes from the website
+scraped_quotes = get_quotes()
 
-    # Load the same file you just saved
-    loaded_quotes = load_quotes_from_disk(f"quotes_{date_str}.csv")
+# Step 3: Save quotes to file
+quotes_date(scraped_quotes, date_str)
 
-    # Show random quote
-    rando_quote()
+# Step 4: Load the same file you just saved
+loaded_quotes = load_quotes_from_disk(f"quotes_{date_str}.csv")
+print(f"Loaded {len(loaded_quotes)} quotes from disk.\n")
+
+# Step 5: Show a random quote
+
+# Call random quote function with loaded quotes
+rando_quote(loaded_quotes)
 
 print("-" * 50)
 print("Group: Scrape")
