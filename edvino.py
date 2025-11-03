@@ -5,7 +5,7 @@ import csv
 import json
 import random
 
-date_str = input("Enter the date:")  #  Date string for filename
+date_str = input("Enter the date (Ex:MM-DD-YYYY):")  #  Date string for filename
 URL = "https://quotes.toscrape.com"
 next_page = "/page/1/"
 scraped_quotes = []  # empty list to store [quote, author] pairs
@@ -35,6 +35,7 @@ while next_page:
         next_page = None
 
 print(f"\n Scraped {len(scraped_quotes)} quotes total!")
+print("")
 
 
 # Save quotes to a CSV file
@@ -75,6 +76,7 @@ def load_quotes_from_disk(filename):
 
 loaded_quotes = load_quotes_from_disk(f"quotes_{date_str}.csv")
 print(f"Loaded {len(loaded_quotes)} quotes from disk.")
+print("")
 
 
 
@@ -91,4 +93,5 @@ print("Brian Santos Cruz, Function: saved_quotes_to_disk")
 print("Valerie Maget/Shejla Osmanovic, Function: load_quotes_from_disk")
 print("Robin Ivan Rafael, Function: random_quote_selection")
 print("Andrew Morrobel, Function: group_introduction")
-print
+print("")
+print("The purpose of this project is to practice and demonstrate our abilites, and to prove our capabilites, as well as showing ourseleves how well we can work togther to accomplish a higher goal, as we scrape a website, for certain infomration being able to save it to a file, and then load it back from the file, and finally select a random quote from the loaded data.")
