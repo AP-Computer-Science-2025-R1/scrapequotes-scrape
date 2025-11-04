@@ -8,12 +8,12 @@ import random
 date_str = input("Enter the date (Ex:MM-DD-YYYY):")  #  Date string for filename
 def get_quotes():
 
-URL = "https://quotes.toscrape.com"
-next_page = "/page/1/"
-scraped_quotes = []  # empty list to store [quote, author] pairs
+    URL = "https://quotes.toscrape.com"
+    next_page = "/page/1/"
+    scraped_quotes = []  # empty list to store [quote, author] pairs
 
 
-while next_page:
+    while next_page:
     page = requests.get(URL + next_page)
     soup = BeautifulSoup(page.text, "html.parser")
 
@@ -36,18 +36,18 @@ while next_page:
     else:
         next_page = None
 
-print(f"\n Scraped {len(scraped_quotes)} quotes total!")
-print("")
+    print(f"\n Scraped {len(scraped_quotes)} quotes total!")
+    print("")
 
 
-# Save quotes to a CSV file
-filename = f"quotes_{date_str}.csv"
+    # Save quotes to a CSV file
+    filename = f"quotes_{date_str}.csv"
 
-with open(filename, 'w', newline='', encoding='utf-8') as csvfile:  
-    writer = csv.writer(csvfile)
-    writer.writerow(["Quote", "Author"]) 
-    writer.writerows(scraped_quotes)
-    print(f"Your quotes are saved in '{filename}' file!") 
+    with open(filename, 'w', newline='', encoding='utf-8') as csvfile:  
+        writer = csv.writer(csvfile)
+        writer.writerow(["Quote", "Author"]) 
+        writer.writerows(scraped_quotes)
+        print(f"Your quotes are saved in '{filename}' file!") 
 
 
 
