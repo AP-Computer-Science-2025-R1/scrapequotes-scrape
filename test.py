@@ -5,7 +5,7 @@ import csv
 import json
 import random
 
-date_str = input("Enter the date (Ex:MM-DD-YYYY):")  #  Date string for filename
+#date_str = input("Enter the date (Ex:MM-DD-YYYY):")  #  Date string for filename
 def get_quotes():
 
     URL = "https://quotes.toscrape.com"
@@ -40,7 +40,7 @@ def get_quotes():
     
     print(f"\n Scraped {len(scraped_quotes)} quotes total!")
     print("")
-scraped_quotes = get_quotes()
+#scraped_quotes = get_quotes()
 
     # Save quotes to a CSV file
 def save_quotes_to_disk(scraped_quotes, date_str):
@@ -51,7 +51,7 @@ def save_quotes_to_disk(scraped_quotes, date_str):
         writer.writerow(["Quote", "Author"]) 
         writer.writerows(scraped_quotes)
         print(f"Your quotes are saved in '{filename}' file!") 
-save_quotes_to_disk(scraped_quotes, date_str)
+#save_quotes_to_disk(scraped_quotes, date_str)
 
 
 def load_quotes_from_disk(filename):
@@ -79,14 +79,14 @@ def load_quotes_from_disk(filename):
         print("Error reading the file:", e)
         return []
 
-loaded_quotes = load_quotes_from_disk(f"quotes_{date_str}.csv")
-print(f"Loaded {len(loaded_quotes)} quotes from disk.")
-print("")
+#loaded_quotes = load_quotes_from_disk(f"quotes_{date_str}.csv")
+#print(f"Loaded {len(loaded_quotes)} quotes from disk.")
+#print("")
 
 
-
-oratrice = input(str("Would you like a random quote? \n yes or no?"))
-if oratrice =="yes":
+def get_random_quote(scraped_quotes):
+    oratrice = input(str("Would you like a random quote? \n yes or no?"))
+    if oratrice =="yes":
         rando_quote = random.choice(scraped_quotes)
         print(rando_quote)
 
@@ -101,5 +101,15 @@ def group_introduction():
     print("Andrew Morrobel, Function: group_introduction")
     print("")
     print("The purpose of this project is to practice and demonstrate our abilites, and to prove our capabilites, as well as showing ourseleves how well we can work togther to accomplish a higher goal, as we scrape a website, for certain infomration being able to save it to a file, and then load it back from the file, and finally select a random quote from the loaded data.")
+    date_str = input("Enter the date (Ex:MM-DD-YYYY):") 
+    return date_str 
 
-group_introduction()
+date_str = group_introduction()
+
+scraped_quotes = get_quotes()
+
+save_quotes_to_disk(scraped_quotes, date_str)
+
+print(f"Loaded {len(loaded_quotes)} quotes from disk.")
+
+get_random_quote(scraped_quotes)
