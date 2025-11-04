@@ -30,11 +30,11 @@ def get_quotes():
             scraped_quotes.append([text, author])
     
     # Find the next page link
-    next_btn = soup.find("li", class_="next")
-    if next_btn:  
-        next_page = next_btn.find("a")["href"]
-    else:
-        next_page = None
+        next_btn = soup.find("li", class_="next")
+        if next_btn:  
+            next_page = next_btn.find("a")["href"]
+        else:
+            next_page = None
     
     return scraped_quotes
     
