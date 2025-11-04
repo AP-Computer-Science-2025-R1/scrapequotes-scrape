@@ -6,6 +6,8 @@ import json
 import random
 
 date_str = input("Enter the date (Ex:MM-DD-YYYY):")  #  Date string for filename
+def get_quotes():
+
 URL = "https://quotes.toscrape.com"
 next_page = "/page/1/"
 scraped_quotes = []  # empty list to store [quote, author] pairs
