@@ -23,8 +23,8 @@ def get_quotes():
         for quote in quotes:
             text = quote.find("span", class_="text").get_text()     # The quote text
             author = quote.find("small", class_="author").get_text()  # The author
-            print(f"{text}\n— {author}")
-            print("-" * 50)
+            #print(f"{text}\n— {author}")
+            #print("-" * 50)
         
             # Save the quote and author
             scraped_quotes.append([text, author])
@@ -101,15 +101,17 @@ def group_introduction():
     print("Andrew Morrobel, Function: group_introduction")
     print("")
     print("The purpose of this project is to practice and demonstrate our abilites, and to prove our capabilites, as well as showing ourseleves how well we can work togther to accomplish a higher goal, as we scrape a website, for certain infomration being able to save it to a file, and then load it back from the file, and finally select a random quote from the loaded data.")
+    print("")
     date_str = input("Enter the date (Ex:MM-DD-YYYY):") 
     return date_str 
 
-date_str = group_introduction()
+if __name__ == "__main__":
+    date_str = group_introduction()
 
-scraped_quotes = get_quotes()
+    scraped_quotes = get_quotes()
 
-save_quotes_to_disk(scraped_quotes, date_str)
+    save_quotes_to_disk(scraped_quotes, date_str)
 
-print(f"Loaded {len(loaded_quotes)} quotes from disk.")
+    loaded_quotes = load_quotes_from_disk(f"quotes_{date_str}.csv")
 
-get_random_quote(scraped_quotes)
+    get_random_quote(scraped_quotes)
