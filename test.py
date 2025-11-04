@@ -28,7 +28,7 @@ def get_quotes():
         
             # Save the quote and author
             scraped_quotes.append([text, author])
-    return scraped_quotes
+    
     # Find the next page link
     next_btn = soup.find("li", class_="next")
     if next_btn:  
@@ -40,16 +40,16 @@ def get_quotes():
     
     print(f"\n Scraped {len(scraped_quotes)} quotes total!")
     print("")
-
+scraped_quotes = get_quotes()
 
     # Save quotes to a CSV file
-    filename = f"quotes_{date_str}.csv"
+filename = f"quotes_{date_str}.csv"
 
-    with open(filename, 'w', newline='', encoding='utf-8') as csvfile:  
-        writer = csv.writer(csvfile)
-        writer.writerow(["Quote", "Author"]) 
-        writer.writerows(scraped_quotes)
-        print(f"Your quotes are saved in '{filename}' file!") 
+with open(filename, 'w', newline='', encoding='utf-8') as csvfile:  
+    writer = csv.writer(csvfile)
+    writer.writerow(["Quote", "Author"]) 
+    writer.writerows(scraped_quotes)
+    print(f"Your quotes are saved in '{filename}' file!") 
 
 
 
