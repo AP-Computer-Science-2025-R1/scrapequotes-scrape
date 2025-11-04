@@ -14,11 +14,11 @@ def get_quotes():
 
 
     while next_page:
-    page = requests.get(URL + next_page)
-    soup = BeautifulSoup(page.text, "html.parser")
+        page = requests.get(URL + next_page)
+        soup = BeautifulSoup(page.text, "html.parser")
 
-    # Find all quote blocks on the page
-    quotes = soup.find_all("div", class_="quote")
+        # Find all quote blocks on the page
+        quotes = soup.find_all("div", class_="quote")
 
     for quote in quotes:
         text = quote.find("span", class_="text").get_text()     # The quote text
