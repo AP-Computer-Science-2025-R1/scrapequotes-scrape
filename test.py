@@ -1,9 +1,19 @@
-import requests
-from bs4 import BeautifulSoup
+# ==================================
+#      Python Quote Scraper
+#
+# Team: [Your Team Name]
+# Members: [List of team member names]
+# ==================================
+
+# SECTION 1: IMPORTS
+# All team members: Add the libraries you need for your function here.
+
 import os
 import csv
 import json
 import random
+from bs4 import BeautifulSoup
+import requests
 
 #date_str = input("Enter the date (Ex:MM-DD-YYYY):")  #  Date string for filename
 def get_quotes():
@@ -115,3 +125,17 @@ if __name__ == "__main__":
     loaded_quotes = load_quotes_from_disk(f"quotes_{date_str}.csv")
 
     get_random_quote(scraped_quotes)
+
+
+
+   
+
+
+
+
+
+
+
+# Team Lead/Integrator: Write the main logic here that calls the functions.
+
+# Step 1: Ask for the date string
