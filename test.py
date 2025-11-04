@@ -43,13 +43,14 @@ def get_quotes():
 scraped_quotes = get_quotes()
 
     # Save quotes to a CSV file
-filename = f"quotes_{date_str}.csv"
+def save_quotes_to_disk(scraped_quotes, date_str):
+    filename = f"quotes_{date_str}.csv"
 
-with open(filename, 'w', newline='', encoding='utf-8') as csvfile:  
-    writer = csv.writer(csvfile)
-    writer.writerow(["Quote", "Author"]) 
-    writer.writerows(scraped_quotes)
-    print(f"Your quotes are saved in '{filename}' file!") 
+    with open(filename, 'w', newline='', encoding='utf-8') as csvfile:  
+        writer = csv.writer(csvfile)
+        writer.writerow(["Quote", "Author"]) 
+        writer.writerows(scraped_quotes)
+        print(f"Your quotes are saved in '{filename}' file!") 
 
 
 
