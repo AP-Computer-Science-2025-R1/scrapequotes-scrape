@@ -20,22 +20,24 @@ def get_quotes():
         # Find all quote blocks on the page
         quotes = soup.find_all("div", class_="quote")
 
-    for quote in quotes:
-        text = quote.find("span", class_="text").get_text()     # The quote text
-        author = quote.find("small", class_="author").get_text()  # The author
-        print(f"{text}\n— {author}")
-        print("-" * 50)
+        for quote in quotes:
+            text = quote.find("span", class_="text").get_text()     # The quote text
+            author = quote.find("small", class_="author").get_text()  # The author
+            print(f"{text}\n— {author}")
+            print("-" * 50)
         
-        # Save the quote and author
-        scraped_quotes.append([text, author])
-
+            # Save the quote and author
+            scraped_quotes.append([text, author])
+    return scraped_quotes
     # Find the next page link
     next_btn = soup.find("li", class_="next")
     if next_btn:  
         next_page = next_btn.find("a")["href"]
     else:
         next_page = None
-
+    
+    return scraped_quotes
+    
     print(f"\n Scraped {len(scraped_quotes)} quotes total!")
     print("")
 
