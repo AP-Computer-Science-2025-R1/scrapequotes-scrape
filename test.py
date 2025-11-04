@@ -51,7 +51,7 @@ def save_quotes_to_disk(scraped_quotes, date_str):
         writer.writerow(["Quote", "Author"]) 
         writer.writerows(scraped_quotes)
         print(f"Your quotes are saved in '{filename}' file!") 
-
+save_quotes_to_disk(scraped_quotes, date_str)
 
 
 def load_quotes_from_disk(filename):
