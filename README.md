@@ -1,3 +1,4 @@
+[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/tSx2C5yO)
 # quote-scraper-class
 
 Project: The Python Quote Scraper 📜
@@ -100,3 +101,4 @@ Installation: Make sure you have the required libraries installed: pip install r
 Inspect the Page: Use your web browser's Developer Tools (right-click -> Inspect) to examine the HTML structure of quotes.toscrape.com. Identify the HTML tags and CSS classes that contain the quote text, author, and tags.
 
 Pagination: The key to scraping all pages is to find the link for the "Next" button. Your script needs to find this link's URL and make a new request until a "Next" button is no longer present on the page.
+
